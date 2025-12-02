@@ -1,0 +1,23 @@
+pipeline{
+	agaent any
+
+	stages{
+		stage("Checkout"){
+			steps{
+			git branch:"main",url:"https://github.com/BokkaDaivikReddy/Devops-internal"
+			}
+		}
+		stage("Build & Test"){
+			steps{
+				sh 'echo "Building.."'
+				sh 'pytest>result.log||true'
+				sh 'cat result.log'
+			}
+		}
+		stage("Deploy"){
+			steps{
+				sh 'echo "Deploying.."'
+			}
+		}
+	}
+}
